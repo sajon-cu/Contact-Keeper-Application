@@ -35,7 +35,7 @@ router.post('/', [
 
     const errors = validationResult(req);
     if(!errors.isEmpty()) {
-        return res.status(400).json({errors: errors.array()})
+        return res.status(401).json({errors: errors.array()})
     }
 
     const {email, password} = req.body;
@@ -44,13 +44,13 @@ router.post('/', [
         let user = await User.findOne({email});
 
         if(!user) {
-            return res.status(400).json({msg: 'Invalid Credentials'});
+            return res.status(401).json({msg: 'Invalid Credentials'});
         }
 
         let isMatch = await bcrypt.compare(password, user.password);
 
         if(!isMatch) {
-            return res.status(400).json({msg: 'Invalid Credentials'});
+            return res.status(401).json({msg: 'Invalid Credentials'});
         }
 
         const playLoad = {

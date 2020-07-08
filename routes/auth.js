@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
-
+const bcrypt = require('bcryptjs');
+const User = require('../models/User');
+const { check, validationResult } = require('express-validator');
 /*
 * @route    GET api/auth
 * @desc     Get logged in user
@@ -15,7 +17,9 @@ router.get('/', (req, res)=>{
 * @desc     Auth user & get token
 * @access   Public
 */
-router.post('/', (req, res)=>{
+router.post('/', [
+
+], (req, res)=>{
     res.send('Log in user');
 })
 

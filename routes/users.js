@@ -41,7 +41,7 @@ router.post('/', [
             }
         }
 
-        let token = jwt.sign(playLoad, config.get('secret'), {expiresIn:36000}, (err, token)=>{
+        let token = jwt.sign(playLoad, config.get('jwtSecret'), {expiresIn:36000}, (err, token)=>{
             if(err) throw err;
             res.json({token});
         });

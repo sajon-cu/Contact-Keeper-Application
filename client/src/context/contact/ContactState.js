@@ -30,10 +30,10 @@ const ContactState = props => {
                 name: 'Sohan Khan',
                 email: 'sohankhan@gmail.com',
                 phone: '111-222-1111',
-                type: 'personal'
+                type: 'professional'
             },
             {
-                id: 2,
+                id: 3,
                 name: 'Shakil Khan',
                 email: 'shailkhan@gmail.com',
                 phone: '111-333-1111',

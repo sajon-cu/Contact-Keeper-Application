@@ -43,7 +43,7 @@ router.post('/', [
 
         let token = jwt.sign(playLoad, config.get('jwtSecret'), {expiresIn:36000}, (err, token)=>{
             if(err) throw err;
-            res.json({token});
+            res.json({user: user, token: token}).status(200);
         });
 
     } catch (error) {

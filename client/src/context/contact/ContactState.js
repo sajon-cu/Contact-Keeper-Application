@@ -92,7 +92,7 @@ const ContactState = props => {
 
 
 
-
+    console.log("Contact State Rendered")
     
     return (
         <ContactContext.Provider value={{

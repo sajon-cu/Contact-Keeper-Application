@@ -2,7 +2,7 @@ import React, {useState, useContext, useEffect} from 'react'
 import AlertContext from '../../context/alert/alertContext';
 import AuthContext from '../../context/auth/authContext';
 
-const Register = () => {
+const Register = (props) => {
 
 
     // Initialize Alert Context
@@ -11,14 +11,20 @@ const Register = () => {
 
     // Initialize Alert Context
     const authContext = useContext(AuthContext);
-    const {registerUser, error, clearErrors} = authContext;
+    const { registerUser, error, clearErrors, isAuthenticated } = authContext;
 
     useEffect(() => {
+        if(isAuthenticated) {
+            props.history.push('/');
+        }
+
         if(error === 'User already exists!') {
             setAlert(error, 'danger');
             clearErrors();
         }
-    }, [error])
+
+        // eslist-disable-next-line
+    }, [error, isAuthenticated, props.history]);
 
     // Component label state
     const [user, setUser] = useState({
